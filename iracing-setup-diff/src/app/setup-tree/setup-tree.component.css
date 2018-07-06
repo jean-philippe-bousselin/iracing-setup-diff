@@ -1,0 +1,21 @@
+:host {
+  width: 80%;
+  text-align: center;
+}
+
+.hasDiff {
+  color: red;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table tr td {
+  padding: 3px;
+}
+
+.switch-setup {
+  margin-top: 30px;
+}

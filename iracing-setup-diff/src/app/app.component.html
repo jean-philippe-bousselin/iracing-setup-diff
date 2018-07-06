@@ -1,0 +1,13 @@
+<h1>iRacing Setup Comparator</h1>
+
+
+<mat-grid-list cols="2" rowHeight="1.1:1">
+  <mat-grid-tile>
+    <setup-tree (setupChange)="refreshSetup($event)"></setup-tree>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <setup-tree [comparingSetup]="setup1"></setup-tree>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

@@ -1,0 +1,35 @@
+<div class="setup-tree">
+  <input 
+    *ngIf="!setupLoaded" 
+    type="file" 
+    (change)="fileChanged($event)"
+    accept=".htm">
+
+  <h2 *ngIf="setupLoaded">{{file.name}}</h2>
+  
+  <mat-accordion *ngIf="setupLoaded">
+  
+    <mat-expansion-panel *ngFor="let section of setup.sections">
+  
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{section.name}} <span [ngClass]="{'hasDiff': section.hasDiff}" *ngIf="section.hasDiff">*</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <table>
+        <tr *ngFor="let setting of section.settings">
+          <td>{{setting.name}} <span [ngClass]="{'hasDiff': section.hasDiff}" *ngIf="setting.hasDiff">*</span></td>
+          <td>
+            <span *ngFor="let value of setting.values" [ngClass]="{'hasDiff': setting.hasDiff}">{{value}} </span> 
+          </td>
+        </tr>
+      </table>
+  
+    </mat-expansion-panel>
+  
+    <button class="switch-setup" *ngIf="setupLoaded" mat-button (click)="unloadSetup()">Switch setup</button>
+  
+  </mat-accordion>
+</div>
+
