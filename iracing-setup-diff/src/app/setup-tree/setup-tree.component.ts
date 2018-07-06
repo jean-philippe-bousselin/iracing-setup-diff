@@ -2,7 +2,6 @@ import { EventEmitter } from '@angular/core';
 import { SetupTreeUtils,  } from './../models/setup-tree-utils.helper';
 import { Component, OnInit, Input,Output, SimpleChange } from '@angular/core';
 import { Setup } from '../models/setup.model';
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from 'constants';
 
 @Component({
   selector: 'setup-tree',
