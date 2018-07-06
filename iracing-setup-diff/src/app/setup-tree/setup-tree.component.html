@@ -21,7 +21,9 @@
         <tr *ngFor="let setting of section.settings">
           <td>{{setting.name}} <span [ngClass]="{'hasDiff': section.hasDiff}" *ngIf="setting.hasDiff">*</span></td>
           <td>
-            <span *ngFor="let value of setting.values" [ngClass]="{'hasDiff': setting.hasDiff}">{{value}} </span> 
+            <span *ngFor="let value of setting.values">
+                {{value.value}} <span *ngIf="value.diff !== 0" [ngClass]="{'hasDiff': setting.hasDiff}">({{value.diff|formatSettingValue}})</span> 
+            </span> 
           </td>
         </tr>
       </table>

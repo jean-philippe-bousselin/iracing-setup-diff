@@ -1,6 +1,7 @@
 import { Setup } from "./setup.model";
 import { Section } from './section.model';
 import { EventEmitter } from "@angular/core";
+import { SettingValue } from "./settingValue.model";
 
 export class SetupTreeUtils {
 
@@ -51,9 +52,10 @@ export class SetupTreeUtils {
           const valTo = currentSetup.sections[i].settings[j].values[k]
           const valFrom = setupFrom.sections[i].settings[j].values[k]
 
-          if(valTo !== valFrom) {
+          if(valTo.value !== valFrom.value) {
             currentSetup.sections[i].hasDiff = true
             currentSetup.sections[i].settings[j].hasDiff = true
+            currentSetup.sections[i].settings[j].values[k].diff = this.getValueDiff(valTo, valFrom)
           }
 
         }
@@ -61,6 +63,13 @@ export class SetupTreeUtils {
     }
 
     return currentSetup
+  }
+
+  getValueDiff(valTo, valFrom) : number {
+    return this.getNumericValue(valTo) - this.getNumericValue(valFrom)
+  }
+  getNumericValue(value: SettingValue) : number {
+    return Number(value.value.replace(/[a-zA-Z\/]/g,'').trim())
   }
 
 }

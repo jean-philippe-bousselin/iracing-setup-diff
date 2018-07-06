@@ -38,7 +38,7 @@ export class Setup {
       if(s.name === sectionName) {
         s.settings.map(set => {
           if(set.name === settingName) {
-            set.values.push(value)
+            set.values.push({value: value, diff: 0})
           }
           return set
         })
