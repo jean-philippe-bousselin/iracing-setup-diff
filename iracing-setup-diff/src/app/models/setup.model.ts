@@ -19,6 +19,10 @@ export class Setup {
     return this
   }
 
+  getSection(name: String) : Section|undefined {
+    return this.sections.find(section => section.name == name)
+  }
+
   hasSection(sectionName: string) {
     return this.sections.find(s => s.name === sectionName)
   }

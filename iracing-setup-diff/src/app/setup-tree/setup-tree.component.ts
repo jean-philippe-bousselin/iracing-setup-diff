@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { SetupTreeUtils,  } from './../models/setup-tree-utils.helper';
 import { Component, OnInit, Input,Output, SimpleChange } from '@angular/core';
 import { Setup } from '../models/setup.model';
+import { Section } from '../models/section.model';
 
 @Component({
   selector: 'setup-tree',
@@ -45,7 +46,8 @@ export class SetupTreeComponent extends SetupTreeUtils implements OnInit {
         const currentLine = cleanContent[i]
         if(this.isSection(currentLine)) {
           section = this.extractSectionName(currentLine)
-          this.setup.addSection({name: section, settings: [], hasDiff: false})
+          // this.setup.addSection({name: section, settings: [], hasDiff: false})
+          this.setup.addSection(new Section(section))
         } else if(this.isAdditionalValue(currentLine)) {
           this.setup.addValue(
             this.extractSettingValue(currentLine),
